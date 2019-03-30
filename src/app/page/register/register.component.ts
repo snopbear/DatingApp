@@ -19,11 +19,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register(model: any){
-    this._authService.login(this.model).subscribe(
+    this._authService.register(this.model).subscribe(
       (res: Login) => {
       console.log('Successfuly');
       },
-      (err: ErrorTracker) => {
+      (err) => {
         console.log(err);
       },
       () => { }

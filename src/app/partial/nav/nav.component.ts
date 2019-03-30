@@ -19,7 +19,8 @@ export class NavComponent implements OnInit {
       (res: Login) => {
         localStorage.setItem('token', res.token);
       },
-      (err: ErrorTracker) => {
+      (err) => {
+        console.log(err);
       },
       () => { }
     );

@@ -15,19 +15,33 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
 
-  login(loginModel: Login): Observable<Login | ErrorTracker> {
+  // login(loginModel: Login): Observable<Login | ErrorTracker> {
+  //   return this.http
+  //     .post<Login>(this.baseUrl + 'login', loginModel)
+  //     .pipe(catchError(err => ErrorHandler.handleHttpErrorTracker(err)
+  //     ));
+  // }
+
+
+
+  
+  // register(loginModel: Login): Observable<Login | ErrorTracker> {
+  //   return this.http
+  //     .post<Login>(this.baseUrl + 'register', loginModel)
+  //     .pipe(catchError(err => ErrorHandler.handleHttpErrorTracker(err)
+  //     ));
+  // }
+
+
+  login(loginModel: Login): Observable<Login> {
     return this.http
       .post<Login>(this.baseUrl + 'login', loginModel)
-      .pipe(catchError(err => ErrorHandler.handleHttpErrorTracker(err)
-      ));
+      .pipe();
   }
 
-
-
-  register(loginModel: Login): Observable<Login | ErrorTracker> {
+  register(loginModel: Login): Observable<Login> {
     return this.http
       .post<Login>(this.baseUrl + 'register', loginModel)
-      .pipe(catchError(err => ErrorHandler.handleHttpErrorTracker(err)
-      ));
+      .pipe();
   }
 }

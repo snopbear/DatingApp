@@ -9,6 +9,7 @@ import { CRUDComponent } from './page/CRUD/CRUD.component';
 import { NavComponent } from './partial/nav/nav.component';
 import { NotFoundComponent } from './partial/not-found/not-found.component';
 import { AppRoutingModule } from './app.routing.module';
+import { ErrorInterceptorProvider } from './infrastructure/core/interceptor/error-interceptor/error.interceptor';
 
 @NgModule({
    declarations: [
@@ -25,7 +26,9 @@ import { AppRoutingModule } from './app.routing.module';
       HttpClientModule,
       FormsModule
    ],
-   providers: [],
+   providers: [
+      ErrorInterceptorProvider
+   ],
    bootstrap: [
       AppComponent
    ]
