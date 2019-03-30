@@ -1,0 +1,102 @@
+<div class="container">
+    <br>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+</button>
+<br>
+<br>
+<br>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{employee.name}}</td>
+        <td>{{employee.code}}</td>
+        <td>{{employee.address}}</td>
+        <td>{{employee.phoneNumber}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+  <input #fileInput type="file"/>
+  <button (click)="addFile()">Add</button>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- <h4 class="modal-title">Modal Header</h4> -->
+      </div>
+      <div class="modal-body">
+
+          <form #employeeForm="ngForm" >
+
+              <div class="form-group" [class.has-error]="code.invalid && code.touched" [class.has-success]="code.valid">
+                  <label for="code" class="control-label text-primary">Code</label>
+                  <input type="text" class="form-control" id="code" name="code" [(ngModel)]="employee.code" #code="ngModel"
+                    required />
+                  <span class="help-block" *ngIf="code.invalid && code.touched">
+                    Code is required
+                  </span>
+                </div>
+
+
+                <div class="form-group" [class.has-error]="name.invalid && name.touched" [class.has-success]="name.valid">
+                  <label for="name" class="control-label text-primary">Name</label>
+                  <input type="text" class="form-control" id="name" name="name" [(ngModel)]="employee.name" #name="ngModel"
+                    required />
+                  <span class="help-block" *ngIf="name.invalid && name.touched">
+                    Name is required
+                  </span>
+                </div>
+
+                <div class="form-group" [class.has-error]="phoneNumber.invalid && phoneNumber.touched"
+                [class.has-success]="phoneNumber.valid">
+                <label for="name" class="control-label text-primary">Mobile</label>
+                <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" [(ngModel)]="employee.phoneNumber"
+                  #phoneNumber="ngModel" required />
+                <span class="help-block" *ngIf="phoneNumber.invalid && phoneNumber.touched">
+                  Mobile is required
+                </span>
+              </div>
+ 
+
+
+              <div class="form-group" [class.has-error]="address.invalid && address.touched" [class.has-success]="address.valid">
+                <label for="name" class="control-label text-primary">Address</label>
+                <input type="text" class="form-control" id="address" name="address" [(ngModel)]="employee.address"
+                  #address="ngModel" required />
+                <span class="help-block" *ngIf="address.invalid && address.touched">
+                  Name is required
+                </span>
+              </div>
+
+
+
+ 
+      
+            </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-dark" type="button" data-dismiss="modal" [disabled]="employeeForm.invalid" (click)="file.click()">Add
+          Employee</button>
+      </div>
+    </div>
+
+  </div>
+</div>
